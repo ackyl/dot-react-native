@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text} from 'react-native';
 import Style from './style';
+import {TextBase} from '@app-components-base';
 
 export default class BalanceCard extends Component {
   componentDidMount() {}
@@ -12,9 +13,22 @@ export default class BalanceCard extends Component {
 
     return (
       <View style={Style.top.container}>
-        <Text style={Style.top.account}> ACCOUNT : {account} </Text>
+        <View style={Style.top.account}>
+          <TextBase
+            text={`ACCOUNT : ${account}`}
+            fontSize={12}
+            fontWeight={'bold'}
+          />
+        </View>
         <View style={Style.top.box}>
-          <Text style={Style.top.status}> SUSPEND </Text>
+          <View style={Style.top.status}>
+            <TextBase
+              text={'SUSPEND'}
+              fontSize={10}
+              fontWeight={'800'}
+              color={'white'}
+            />
+          </View>
         </View>
       </View>
     );
@@ -27,8 +41,15 @@ export default class BalanceCard extends Component {
 
     return (
       <View style={Style.middle.container}>
-        <Text style={Style.middle.label}>Remaining Balance</Text>
-        <Text style={Style.middle.value}>IDR {balance}</Text>
+        <TextBase text={'Remaining Balance'} fontSize={12} color={'rgba(15, 24, 33, 0.45)'} />
+
+        <View style={Style.middle.margin} />
+
+        <TextBase
+          text={`IDR ${balance.toLocaleString()}`}
+          fontSize={32}
+          fontWeight={'bold'}
+        />
       </View>
     );
   }
@@ -54,8 +75,15 @@ export default class BalanceCard extends Component {
   _renderBottomText(title, amount) {
     return (
       <View style={Style.bottom.container}>
-        <Text style={Style.bottom.label}>{title}</Text>
-        <Text style={Style.bottom.value}>IDR {amount}</Text>
+        <TextBase text={title} fontSize={12} color={'rgba(15, 24, 33, 0.45)'} />
+
+        <View style={Style.bottom.margin} />
+
+        <TextBase
+          text={`IDR ${amount.toLocaleString()}`}
+          fontSize={18}
+          fontWeight={'bold'}
+        />
       </View>
     );
   }

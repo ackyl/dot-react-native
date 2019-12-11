@@ -1,6 +1,6 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from 'react-native';
-import {BalanceCard, ReceivedCard} from '@app-components';
+import {BalanceCard, ReceivedCard} from '@app-components-unit';
 
 const App: () => React$Node = () => {
   return (
