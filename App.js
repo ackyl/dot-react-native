@@ -1,6 +1,13 @@
 import React from 'react';
 import {SafeAreaView, ScrollView, StatusBar, StyleSheet} from 'react-native';
-import {BalanceCard, ReceivedCard} from '@app-components-unit';
+
+import {
+  BalanceCard,
+  ReceivedCard,
+  OutstandingCard,
+  OverdueCard,
+  InvoiceCard,
+} from '@app-components-unit';
 
 const App: () => React$Node = () => {
   return (
@@ -8,6 +15,7 @@ const App: () => React$Node = () => {
       <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.main}>
         <ScrollView contentInsetAdjustmentBehavior="automatic">
+
           <BalanceCard
             account={'DIMAS_ACKYL'}
             balance={50000000}
@@ -15,7 +23,14 @@ const App: () => React$Node = () => {
             exposure={500000}
           />
 
+          <OverdueCard />
+
           <ReceivedCard received={1000000} />
+
+          <OutstandingCard amount={1000000} />
+
+          <InvoiceCard />
+
         </ScrollView>
       </SafeAreaView>
     </>

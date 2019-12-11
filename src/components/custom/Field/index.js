@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import Style from './style';
+
 import {TextBase} from '@app-components-base';
+import {Spacer} from '@app-components-custom';
 
 export default class Field extends Component {
   componentDidMount() {}
@@ -55,13 +57,15 @@ export default class Field extends Component {
   // ----------------------------------------
 
   _renderValue() {
-    const {value, valueSize, light} = this.props;
+    const {value, valueSize, light, currency} = this.props;
 
     const fontSize = valueSize ? valueSize : 18;
 
+    const text = currency ? `IDR ${value.toLocaleString()}` : value;
+
     return (
       <TextBase
-        text={`IDR ${value.toLocaleString()}`}
+        text={text}
         fontSize={fontSize}
         color={this.getTextColor('value', light)}
         fontWeight={'bold'}
@@ -76,7 +80,7 @@ export default class Field extends Component {
       <View style={this.getStyleBase()}>
         {this._renderLabel()}
 
-        <View style={Style.margin} />
+        <Spacer space={0.5} />
 
         {this._renderValue()}
       </View>

@@ -3,18 +3,31 @@ import {View} from 'react-native';
 import Style from './style';
 
 import {TextBase} from '@app-components-base';
-import {Field, Card, Button} from '@app-components-custom';
+import {Field, Card, Spacer} from '@app-components-custom';
 
-export default class ReceivedCard extends Component {
+export default class OutstandingCard extends Component {
   componentDidMount() {}
 
   // ----------------------------------------
 
   _renderLeft() {
-    const {received} = this.props;
+    const {amount} = this.props;
+
     return (
       <View style={Style.left}>
-        <Field label={'Payment Received'} value={received} light currency />
+        <View style={Style.row}>
+          <View style={Style.circle} />
+          <View style={Style.outstanding}>
+            <TextBase text={'Outstanding Payment'} fontSize={16} />
+            <Spacer space={1} />
+            <Field
+              label={'31 July 2019'}
+              value={amount}
+              valueSize={26}
+              currency
+            />
+          </View>
+        </View>
       </View>
     );
   }
@@ -23,8 +36,8 @@ export default class ReceivedCard extends Component {
 
   _renderRight() {
     return (
-      <View style={Style.right.container}>
-        <Button label={'Learn More'} />
+      <View style={Style.right}>
+        <View style={Style.drop} />
       </View>
     );
   }
@@ -34,7 +47,7 @@ export default class ReceivedCard extends Component {
   render() {
     return (
       <Card
-        background={'grey'}
+        background={'white'}
         marginH={16}
         marginV={8}
         padding={16}

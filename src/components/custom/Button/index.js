@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {View} from 'react-native';
 import Style from './style';
+import {TextBase} from '@app-components-base';
 
-export default class Card extends Component {
+export default class Button extends Component {
   componentDidMount() {}
 
   // ----------------------------------------
 
   getStyleBase() {
-    const {background, marginH, marginV, padding, paddingVertical} = this.props;
+    const {background} = this.props;
 
     const composedStyle = [Style.base];
     const newStyle = {};
@@ -18,16 +19,11 @@ export default class Card extends Component {
         newStyle.backgroundColor = '#ffc52b';
         break;
       case 'grey':
-        newStyle.backgroundColor = 'rgba(215, 235, 255, 0.2)';
+        newStyle.backgroundColor = 'rgba(15, 24, 33, 0.15)';
         break;
       default:
-        newStyle.backgroundColor = background;
+        newStyle.backgroundColor = 'rgba(215, 235, 255, 0.1)';
     }
-
-    newStyle.marginHorizontal = marginH ? marginH : 0;
-    newStyle.marginVertical = marginV ? marginV : 0;
-    newStyle.padding = padding ? padding : 0;
-    newStyle.paddingVertical = paddingVertical ? paddingVertical : 0;
 
     composedStyle.push(newStyle);
 
@@ -37,6 +33,12 @@ export default class Card extends Component {
   // ----------------------------------------
 
   render() {
-    return <View style={this.getStyleBase()}>{this.props.children}</View>;
+    const {label, color} = this.props;
+
+    return (
+      <View style={this.getStyleBase()}>
+        <TextBase text={label} fontSize={14} color={color ? color : 'white'} />
+      </View>
+    );
   }
 }

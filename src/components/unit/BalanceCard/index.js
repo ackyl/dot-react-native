@@ -43,7 +43,12 @@ export default class BalanceCard extends Component {
 
     return (
       <View style={Style.middle}>
-        <Field label={'Remaining Balance'} value={balance} valueSize={32} />
+        <Field
+          label={'Remaining Balance'}
+          value={balance}
+          valueSize={32}
+          currency
+        />
       </View>
     );
   }
@@ -56,13 +61,13 @@ export default class BalanceCard extends Component {
     return (
       <View style={Style.row}>
         <View style={Style.bottom}>
-          <Field label={'Credit Limit'} value={limit} />
+          <Field label={'Credit Limit'} value={limit} currency />
         </View>
 
         <View style={Style.vLine} />
 
         <View style={Style.bottom}>
-          <Field label={'Credit Exposure'} value={exposure} />
+          <Field label={'Credit Exposure'} value={exposure} currency />
         </View>
       </View>
     );
@@ -72,7 +77,7 @@ export default class BalanceCard extends Component {
 
   render() {
     return (
-      <Card background={'yellow'} margin={16}>
+      <Card background={'yellow'} marginH={16} marginV={8}>
         {this._renderTop()}
 
         {this._renderMiddle()}

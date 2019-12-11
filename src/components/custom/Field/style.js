@@ -1,5 +1,1 @@
-export default {
-  margin: {
-    marginBottom: 6,
-  },
-};
+export default {};
