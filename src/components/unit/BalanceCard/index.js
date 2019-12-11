@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import Style from './style';
+
 import {TextBase} from '@app-components-base';
+import {Field, Card} from '@app-components-custom';
 
 export default class BalanceCard extends Component {
   componentDidMount() {}
@@ -40,16 +42,8 @@ export default class BalanceCard extends Component {
     const {balance} = this.props;
 
     return (
-      <View style={Style.middle.container}>
-        <TextBase text={'Remaining Balance'} fontSize={12} color={'rgba(15, 24, 33, 0.45)'} />
-
-        <View style={Style.middle.margin} />
-
-        <TextBase
-          text={`IDR ${balance.toLocaleString()}`}
-          fontSize={32}
-          fontWeight={'bold'}
-        />
+      <View style={Style.middle}>
+        <Field label={'Remaining Balance'} value={balance} valueSize={32} />
       </View>
     );
   }
@@ -61,29 +55,15 @@ export default class BalanceCard extends Component {
 
     return (
       <View style={Style.row}>
-        {this._renderBottomText('Credit Limit', limit)}
+        <View style={Style.bottom}>
+          <Field label={'Credit Limit'} value={limit} />
+        </View>
 
         <View style={Style.vLine} />
 
-        {this._renderBottomText('Credit Exposure', exposure)}
-      </View>
-    );
-  }
-
-  // ----------------------------------------
-
-  _renderBottomText(title, amount) {
-    return (
-      <View style={Style.bottom.container}>
-        <TextBase text={title} fontSize={12} color={'rgba(15, 24, 33, 0.45)'} />
-
-        <View style={Style.bottom.margin} />
-
-        <TextBase
-          text={`IDR ${amount.toLocaleString()}`}
-          fontSize={18}
-          fontWeight={'bold'}
-        />
+        <View style={Style.bottom}>
+          <Field label={'Credit Exposure'} value={exposure} />
+        </View>
       </View>
     );
   }
@@ -92,17 +72,15 @@ export default class BalanceCard extends Component {
 
   render() {
     return (
-      <View style={Style.card}>
-        <View>
-          {this._renderTop()}
+      <Card background={'yellow'} margin={16}>
+        {this._renderTop()}
 
-          {this._renderMiddle()}
+        {this._renderMiddle()}
 
-          <View style={Style.hLine} />
+        <View style={Style.hLine} />
 
-          {this._renderBottom()}
-        </View>
-      </View>
+        {this._renderBottom()}
+      </Card>
     );
   }
 }

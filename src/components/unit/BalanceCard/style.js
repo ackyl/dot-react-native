@@ -1,13 +1,4 @@
 export default {
-  card: {
-    backgroundColor: '#ffc52b',
-    borderRadius: 8,
-    marginTop: 16,
-    marginBottom: 16,
-    marginHorizontal: 16,
-    fontFamily: 'Roboto',
-  },
-
   top: {
     container: {
       flexDirection: 'row',
@@ -26,28 +17,15 @@ export default {
       margin: 6,
     },
   },
-
   middle: {
-    container: {
-      marginHorizontal: 16,
-      marginVertical: 14,
-    },
-    margin: {
-      marginBottom: 6,
-    },
+    marginHorizontal: 16,
+    marginVertical: 14,
   },
-
   bottom: {
-    container: {
-      flex: 1,
-      paddingVertical: 22,
-      marginLeft: 16,
-    },
-    margin: {
-      marginBottom: 6,
-    },
+    flex: 1,
+    paddingVertical: 22,
+    marginLeft: 16,
   },
-
   hLine: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(52, 52, 52, 0.4)',

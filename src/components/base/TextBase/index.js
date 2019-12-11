@@ -5,7 +5,9 @@ import Style from './style';
 export default class TextBase extends Component {
   componentDidMount() {}
 
-  getStyle() {
+  // ----------------------------------------
+
+  getStyleBase() {
     const {fontSize, fontWeight, color} = this.props;
 
     const composedStyle = [Style.base];
@@ -25,6 +27,6 @@ export default class TextBase extends Component {
   render() {
     const {text} = this.props;
 
-    return <Text style={this.getStyle()}> {text} </Text>;
+    return <Text style={this.getStyleBase()}> {text} </Text>;
   }
 }
