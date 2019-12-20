@@ -8,18 +8,32 @@ export default class Spacer extends Component {
   // ----------------------------------------
 
   getStyleBase() {
-    const {space, left, row} = this.props;
+    const {
+      space,
+      top,
+      left,
+      row,
+      flex,
+      justifyContent,
+      alignItems,
+      backgroundColor,
+    } = this.props;
 
-    const composedStyle = [Style.base];
-    const newStyle = {};
+    const baseStyle = [Style.base];
+    const apply = {};
 
-    newStyle.marginBottom = space ? space * 8 : 0;
-    newStyle.marginLeft = left ? left * 8 : 0;
-    newStyle.flexDirection = row ? 'row' : null;
+    apply.marginBottom = space ? space * 8 : 0;
+    apply.marginTop = top ? top * 8 : 0;
+    apply.marginLeft = left ? left * 8 : 0;
+    apply.flexDirection = row ? 'row' : null;
+    apply.flex = flex ? flex : null;
+    apply.justifyContent = justifyContent ? justifyContent : null;
+    apply.alignItems = alignItems ? alignItems : null;
+    apply.backgroundColor = backgroundColor ? backgroundColor : null;
 
-    composedStyle.push(newStyle);
+    baseStyle.push(apply);
 
-    return composedStyle;
+    return baseStyle;
   }
 
   // ----------------------------------------

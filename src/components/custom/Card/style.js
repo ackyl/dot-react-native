@@ -1,5 +1,3 @@
 export default {
-  base: {
-    borderRadius: 8,
-  },
+  base: {},
 };

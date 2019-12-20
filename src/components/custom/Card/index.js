@@ -8,30 +8,70 @@ export default class Card extends Component {
   // ----------------------------------------
 
   getStyleBase() {
-    const {background, marginH, marginV, padding, paddingVertical} = this.props;
+    const {
+      background,
+      borderRadius,
+      borderBL,
+      borderBR,
+      borderTL,
+      borderTR,
+      borderWidth,
+      borderColor,
+      margin,
+      marginH,
+      marginV,
+      marginTop,
+      marginBottom,
+      padding,
+      paddingV,
+      paddingTop,
+      paddingBottom,
+      height,
+      width,
+    } = this.props;
 
-    const composedStyle = [Style.base];
-    const newStyle = {};
+    const baseStyle = [Style.base];
+    const apply = {};
 
     switch (background) {
       case 'yellow':
-        newStyle.backgroundColor = '#ffc52b';
+        apply.backgroundColor = '#ffc52b';
         break;
       case 'grey':
-        newStyle.backgroundColor = 'rgba(215, 235, 255, 0.2)';
+        apply.backgroundColor = 'rgba(215, 235, 255, 0.2)';
+        break;
+      case 'clear':
+        apply.backgroundColor = 'rgba(0, 0, 0, 0.1)';
         break;
       default:
-        newStyle.backgroundColor = background;
+        apply.backgroundColor = background;
     }
 
-    newStyle.marginHorizontal = marginH ? marginH : 0;
-    newStyle.marginVertical = marginV ? marginV : 0;
-    newStyle.padding = padding ? padding : 0;
-    newStyle.paddingVertical = paddingVertical ? paddingVertical : 0;
+    apply.borderRadius = borderRadius ? borderRadius : null;
+    apply.borderBottomLeftRadius = borderBL ? borderBL : null;
+    apply.borderBottomRightRadius = borderBR ? borderBR : null;
+    apply.borderTopLeftRadius = borderTL ? borderTL : null;
+    apply.borderTopRightRadius = borderTR ? borderTR : null;
+    apply.borderWidth = borderWidth ? borderWidth : null;
+    apply.borderColor = borderColor ? borderColor : null;
 
-    composedStyle.push(newStyle);
+    apply.margin = margin ? margin : null;
+    apply.marginHorizontal = marginH ? marginH : null;
+    apply.marginVertical = marginV ? marginV : null;
+    apply.marginTop = marginTop ? marginTop : null;
+    apply.marginBottom = marginBottom ? marginBottom : null;
 
-    return composedStyle;
+    apply.padding = padding ? padding : null;
+    apply.paddingVertical = paddingV ? paddingV : null;
+    apply.paddingTop = paddingTop ? paddingTop : null;
+    apply.paddingBottom = paddingBottom ? paddingBottom : null;
+
+    apply.height = height ? height : null;
+    apply.width = width ? width : null;
+
+    baseStyle.push(apply);
+
+    return baseStyle;
   }
 
   // ----------------------------------------

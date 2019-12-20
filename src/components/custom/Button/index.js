@@ -11,23 +11,23 @@ export default class Button extends Component {
   getStyleBase() {
     const {background} = this.props;
 
-    const composedStyle = [Style.base];
-    const newStyle = {};
+    const baseStyle = [Style.base];
+    const apply = {};
 
     switch (background) {
       case 'yellow':
-        newStyle.backgroundColor = '#ffc52b';
+        apply.backgroundColor = '#ffc52b';
         break;
       case 'grey':
-        newStyle.backgroundColor = 'rgba(15, 24, 33, 0.15)';
+        apply.backgroundColor = 'rgba(15, 24, 33, 0.15)';
         break;
       default:
-        newStyle.backgroundColor = 'rgba(215, 235, 255, 0.1)';
+        apply.backgroundColor = 'rgba(215, 235, 255, 0.1)';
     }
 
-    composedStyle.push(newStyle);
+    baseStyle.push(apply);
 
-    return composedStyle;
+    return baseStyle;
   }
 
   // ----------------------------------------

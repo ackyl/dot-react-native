@@ -8,25 +8,43 @@ export default class TextBase extends Component {
   // ----------------------------------------
 
   getStyleBase() {
-    const {fontSize, fontWeight, color} = this.props;
+    const {
+      fontSize,
+      fontWeight,
+      color,
+      marginLeft,
+      paddingLeft,
+      bold,
+      opacity,
+    } = this.props;
 
-    const composedStyle = [Style.base];
-    const newStyle = {};
+    const baseStyle = [Style.base];
+    const apply = {};
 
-    newStyle.fontSize = fontSize ? fontSize : 12;
-    newStyle.fontWeight = fontWeight ? fontWeight : null;
-    newStyle.color = color ? color : 'black';
+    apply.fontSize = fontSize ? fontSize : 12;
+    apply.fontWeight = fontWeight ? fontWeight : null;
+    apply.fontWeight = bold ? 'bold' : null;
+    apply.color = color ? color : 'black';
+    apply.marginLeft = marginLeft ? marginLeft : null;
+    apply.paddingLeft = paddingLeft ? paddingLeft : null;
+    apply.opacity = opacity ? opacity : null;
 
-    composedStyle.push(newStyle);
+    baseStyle.push(apply);
 
-    return composedStyle;
+    return baseStyle;
   }
 
   // ----------------------------------------
 
   render() {
-    const {text} = this.props;
+    const {text, numberOfLines} = this.props;
 
-    return <Text style={this.getStyleBase()}> {text} </Text>;
+    return (
+      <Text
+        style={this.getStyleBase()}
+        numberOfLines={numberOfLines ? numberOfLines : null}>
+        {text}
+      </Text>
+    );
   }
 }
