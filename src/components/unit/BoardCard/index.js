@@ -32,24 +32,7 @@ export default class BoardCard extends Component {
 
     return (
       <View style={Style.left}>
-        <TextBase text={title} fontSize={16} color={'white'} bold />
-      </View>
-    );
-  }
-
-  // ----------------------------------------
-
-  _renderContent() {
-    return (
-      <View style={Style.left}>
-        <TextBase
-          text={
-            'Your account has been suspended because payment overdue, please pay this immedietly or call us for more information'
-          }
-          fontSize={14}
-          color={'white'}
-          numberOfLines={3}
-        />
+        <TextBase text={title} fontSize={16} color={'white'} />
       </View>
     );
   }
@@ -60,11 +43,12 @@ export default class BoardCard extends Component {
     return (
       <Card
         background={'clear'}
-        borderWidth={1}
+        borderWidth={2}
         borderColor={'white'}
+        borderRadius={8}
         marginBottom={12}
         marginH={16}
-        padding={12}>
+        padding={16}>
         {this._renderTitle()}
       </Card>
     );

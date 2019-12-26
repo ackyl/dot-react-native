@@ -32,29 +32,7 @@ export default class BookCard extends Component {
 
     return (
       <View style={Style.left}>
-        <TextBase
-          text={title}
-          fontSize={this.getFontSize(title)}
-          color={'white'}
-          bold
-        />
-      </View>
-    );
-  }
-
-  // ----------------------------------------
-
-  _renderContent() {
-    return (
-      <View style={Style.left}>
-        <TextBase
-          text={
-            'Your account has been suspended because payment overdue, please pay this immedietly or call us for more information'
-          }
-          fontSize={14}
-          color={'white'}
-          numberOfLines={3}
-        />
+        <TextBase text={title} fontSize={20} color={'white'} bold />
       </View>
     );
   }
@@ -64,14 +42,22 @@ export default class BookCard extends Component {
   render() {
     return (
       <Card
-        background={'red'}
-        borderTR={12}
-        borderTL={12}
+        background={'white'}
+        borderWidth={0.5}
         borderColor={'white'}
+        borderRadius={8}
         marginBottom={12}
         marginH={16}
-        padding={12}>
-        {this._renderTitle()}
+        paddingLeft={8}>
+        <Card
+          background={'black'}
+          borderWidth={1}
+          borderColor={'white'}
+          borderTR={8}
+          borderBR={8}
+          padding={12}>
+          {this._renderTitle()}
+        </Card>
       </Card>
     );
   }

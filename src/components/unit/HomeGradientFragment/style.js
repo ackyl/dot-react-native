@@ -2,6 +2,9 @@ export default {
   row: {
     flexDirection: 'row',
   },
+  left: {
+    flex: 1,
+  },
   right: {
     container: {
       justifyContent: 'center',

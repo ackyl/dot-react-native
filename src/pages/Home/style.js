@@ -1,7 +1,7 @@
 export default {
   main: {
     backgroundColor: 'black',
-    paddingTop: 12,
+    paddingTop: 60,
   },
   row: {
     flexDirection: 'row',

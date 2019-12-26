@@ -1,126 +1,90 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {Component} from 'react';
-import {ScrollView, Text} from 'react-native';
-import {View} from 'react-native';
+import {ScrollView, FlatList, View} from 'react-native';
 import Style from './style';
-import {Card, Spacer, Button} from '@app-components-custom';
+import {LOREM_IPSUM, DATA} from './consts';
+import {Spacer} from '@app-components-custom';
 
-import {TextBase} from '@app-components-base';
-
-import {NotePreviewCard, BookCard, BoardCard} from '@app-components-unit';
-import MaskedView from '@react-native-community/masked-view';
-
-import LinearGradient from 'react-native-linear-gradient';
+import {NotePreviewCard} from '@app-components-unit';
 
 export default class Home extends Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      heights: [],
+    };
+  }
 
   // ----------------------------------------
 
-  _renderNavBar() {
+  getHeight(height) {
+    let newHeights = this.state.heights;
+    newHeights.push(height);
+    this.setState({heights: newHeights});
+  }
+
+  // ----------------------------------------
+
+  _renderNotePreviewList() {
+    const arrangedData = [];
+    const itemRenders = [];
+    const middle = Math.ceil(DATA.length / 2);
+
+    for (let x in DATA) {
+      arrangedData.push(' ');
+    }
+
+    let rightOrder = middle;
+    let leftOrder = 0;
+
+    for (let x in DATA) {
+      if (x % 2 === 0) {
+        arrangedData[leftOrder] = DATA[x];
+        leftOrder++;
+      } else {
+        arrangedData[rightOrder] = DATA[x];
+        rightOrder++;
+      }
+    }
+
+    arrangedData.map((item, index) => {
+      itemRenders.push(this._renderNotePreviewCards(item, index));
+    });
+
+    return itemRenders;
+  }
+
+  // ----------------------------------------
+
+  _renderNotePreviewCards(item) {
     return (
-      <Spacer row alignItems={'center'}>
-        <Spacer flex={1} alignItems={'center'}>
-          <MaskedView
-            maskElement={
-              <View
-                style={{
-                  // Transparent background because mask is based off alpha channel.
-                  backgroundColor: 'transparent',
-                }}>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: 'white',
-                    fontWeight: 'bold',
-                  }}>
-                  Boards
-                </Text>
-              </View>
-            }>
-            <LinearGradient
-              colors={['#242424', 'white']}
-              start={{x: 0, y: 0}}
-              end={{x: 1, y: 0}}
-              locations={[0, 0.8]}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: 'white',
-                  fontWeight: 'bold',
-                  opacity: 0,
-                }}>
-                Boards
-              </Text>
-            </LinearGradient>
-          </MaskedView>
-        </Spacer>
-
-        <Spacer flex={1} alignItems={'center'}>
-          <TextBase text={'Home'} color={'white'} fontSize={24} bold />
-        </Spacer>
-
-        <Spacer flex={1} alignItems={'center'}>
-          <MaskedView
-            maskElement={
-              <View
-                style={{
-                  // Transparent background because mask is based off alpha channel.
-                  backgroundColor: 'transparent',
-                }}>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: 'white',
-                    fontWeight: 'bold',
-                  }}>
-                  Books
-                </Text>
-              </View>
-            }>
-            <LinearGradient
-              colors={['white', '#ffffff00']}
-              start={{x: 0, y: 0}}
-              end={{x: 1.2, y: 0}}>
-              <Text
-                style={{
-                  fontSize: 16,
-                  color: 'white',
-                  fontWeight: 'bold',
-                  opacity: 0,
-                }}>
-                Books
-              </Text>
-            </LinearGradient>
-          </MaskedView>
-        </Spacer>
-      </Spacer>
+      <View
+        style={{
+          flex: -1,
+        }}>
+        <NotePreviewCard title={item.title} content={item.content} />
+      </View>
     );
   }
 
   // ----------------------------------------
 
   render() {
+    const middle = Math.ceil(DATA.length / 2);
+    const height = middle * 220;
+
     return (
-      <ScrollView style={Style.main} contentInsetAdjustmentBehavior="automatic">
-        <Spacer space={4} top={2}>
-          {this._renderNavBar()}
-        </Spacer>
-
-        <Spacer>
-          <BookCard title={'Book of Sadism'} />
-        </Spacer>
-
-        <Spacer>
-          <BookCard title={'Book of Lorem Ipsum Dolor Si Amet'} />
-        </Spacer>
-
-        <Spacer>
-          <BoardCard
-            title={
-              '1. Lorem Ipsum Dolor si Amet Lorem Ipsum Dolor si Amet\n2.Lorem Ipsum Dolor si Amet Lorem ipsum'
-            }
-          />
-        </Spacer>
+      <ScrollView style={{height: '100%', backgroundColor: 'black'}}>
+        <View
+          style={{
+            flex: -1,
+            flexWrap: 'wrap',
+            height: height,
+            top: 45,
+          }}>
+          {this._renderNotePreviewList()}
+        </View>
       </ScrollView>
     );
   }

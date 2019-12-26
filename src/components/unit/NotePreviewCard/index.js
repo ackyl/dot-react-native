@@ -6,17 +6,47 @@ import {TextBase} from '@app-components-base';
 import {Card, Spacer, Button} from '@app-components-custom';
 
 export default class NotePreviewCard extends Component {
-  componentDidMount() {}
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      heights: [],
+    };
+  }
+
+  // ----------------------------------------
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.props !== nextProps) {
+      return true;
+    }
+
+    // if (this.state !== nextState) {
+    //   return true;
+    // }
+
+    return false;
+  }
+
+  // ----------------------------------------
+
+  saveHeight(height) {
+    let newHeights = this.state.heights;
+    newHeights.push(height);
+    this.setState({heights: newHeights});
+  }
 
   // ----------------------------------------
 
   _renderTitle() {
+    const {title} = this.props;
     return (
-      <View style={Style.left}>
+      <View>
         <TextBase
-          text={'You have overdue invoices'}
+          text={title}
           fontSize={18}
           color={'white'}
+          numberOfLines={1}
           bold
         />
       </View>
@@ -26,15 +56,14 @@ export default class NotePreviewCard extends Component {
   // ----------------------------------------
 
   _renderContent() {
+    const {content} = this.props;
     return (
-      <View style={Style.left}>
+      <View>
         <TextBase
-          text={
-            'Your account has been suspended because payment overdue, please pay this immedietly or call us for more information'
-          }
+          text={content}
           fontSize={14}
           color={'white'}
-          numberOfLines={3}
+          numberOfLines={8}
         />
       </View>
     );
@@ -42,14 +71,25 @@ export default class NotePreviewCard extends Component {
 
   // ----------------------------------------
 
+  getHeight(height) {
+    const {getHeight} = this.props;
+    if (getHeight) {
+      getHeight(height);
+    }
+  }
+
+  // ----------------------------------------
+
   render() {
     return (
       <Card
-        background={'clear'}
         borderWidth={1}
+        borderRadius={8}
         borderColor={'white'}
         margin={8}
-        padding={16}>
+        padding={16}
+        getHeight={height => this.getHeight(height)}
+        width={190}>
         <Spacer>
           {this._renderTitle()}
           <Spacer space={1.5} />

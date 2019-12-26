@@ -26,8 +26,11 @@ export default class Card extends Component {
       paddingV,
       paddingTop,
       paddingBottom,
+      paddingLeft,
       height,
       width,
+      top,
+      bottom,
     } = this.props;
 
     const baseStyle = [Style.base];
@@ -65,9 +68,13 @@ export default class Card extends Component {
     apply.paddingVertical = paddingV ? paddingV : null;
     apply.paddingTop = paddingTop ? paddingTop : null;
     apply.paddingBottom = paddingBottom ? paddingBottom : null;
+    apply.paddingLeft = paddingLeft ? paddingLeft : null;
 
     apply.height = height ? height : null;
     apply.width = width ? width : null;
+
+    apply.top = top ? top : null;
+    apply.bottom = bottom ? bottom : null;
 
     baseStyle.push(apply);
 
@@ -76,7 +83,23 @@ export default class Card extends Component {
 
   // ----------------------------------------
 
+  measureView(event) {
+    const {getHeight} = this.props;
+
+    if (getHeight) {
+      getHeight(event.nativeEvent.layout.height);
+    }
+  }
+
+  // ----------------------------------------
+
   render() {
-    return <View style={this.getStyleBase()}>{this.props.children}</View>;
+    return (
+      <View
+        style={this.getStyleBase()}
+        onLayout={event => this.measureView(event)}>
+        {this.props.children}
+      </View>
+    );
   }
 }
