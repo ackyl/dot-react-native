@@ -17,7 +17,7 @@ export default class Spacer extends Component {
       justifyContent,
       alignItems,
       backgroundColor,
-      flexWrap,
+      wrap,
     } = this.props;
 
     const baseStyle = [Style.base];
@@ -31,7 +31,7 @@ export default class Spacer extends Component {
     apply.justifyContent = justifyContent ? justifyContent : null;
     apply.alignItems = alignItems ? alignItems : null;
     apply.backgroundColor = backgroundColor ? backgroundColor : null;
-    apply.flexWrap = flexWrap ? flexWrap : null;
+    apply.flexWrap = wrap ? 'wrap' : null;
 
     baseStyle.push(apply);
 

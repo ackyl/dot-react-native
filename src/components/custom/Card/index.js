@@ -22,6 +22,8 @@ export default class Card extends Component {
       marginV,
       marginTop,
       marginBottom,
+      marginLeft,
+      marginRight,
       padding,
       paddingV,
       paddingTop,
@@ -63,6 +65,8 @@ export default class Card extends Component {
     apply.marginVertical = marginV ? marginV : null;
     apply.marginTop = marginTop ? marginTop : null;
     apply.marginBottom = marginBottom ? marginBottom : null;
+    apply.marginLeft = marginLeft ? marginLeft : null;
+    apply.marginRight = marginRight ? marginRight : null;
 
     apply.padding = padding ? padding : null;
     apply.paddingVertical = paddingV ? paddingV : null;

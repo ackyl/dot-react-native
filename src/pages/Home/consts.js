@@ -6,7 +6,7 @@ export const LOREM_IPSUM = {
   M:
     'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.',
   S:
-    'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede.',
+    'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper susa',
   XS: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
 };
 
@@ -14,7 +14,8 @@ export const DATA = [
   {
     id: 1,
     title: 'Note 1',
-    content: LOREM_IPSUM.XL,
+    content: LOREM_IPSUM.XS,
+    label: ['Book of Verse', 'Book of Past', 'Cart'],
   },
   {
     id: 2,
@@ -24,26 +25,28 @@ export const DATA = [
   {
     id: 3,
     title: 'Note 3',
-    content: LOREM_IPSUM.XS,
+    content: LOREM_IPSUM.S,
   },
   {
     id: 4,
     title: 'Note 4',
-    content: LOREM_IPSUM.L,
+    content: LOREM_IPSUM.XL,
+    label: ['Book of Past', 'Cart', 'Present Collective'],
   },
   {
     id: 5,
     title: 'Note 5',
-    content: LOREM_IPSUM.S,
+    content: LOREM_IPSUM.XL,
   },
   {
     id: 6,
     title: 'Note 6',
     content: LOREM_IPSUM.XS,
+    label: ['Book of Past', 'Cart', 'Present Collective', 'Carter B'],
   },
   {
     id: 7,
     title: 'Note 7',
-    content: LOREM_IPSUM.XL,
+    content: LOREM_IPSUM.XS,
   },
 ];

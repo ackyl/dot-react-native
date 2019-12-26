@@ -6,38 +6,6 @@ import {TextBase} from '@app-components-base';
 import {Card, Spacer, Button} from '@app-components-custom';
 
 export default class NotePreviewCard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      heights: [],
-    };
-  }
-
-  // ----------------------------------------
-
-  shouldComponentUpdate(nextProps, nextState) {
-    if (this.props !== nextProps) {
-      return true;
-    }
-
-    // if (this.state !== nextState) {
-    //   return true;
-    // }
-
-    return false;
-  }
-
-  // ----------------------------------------
-
-  saveHeight(height) {
-    let newHeights = this.state.heights;
-    newHeights.push(height);
-    this.setState({heights: newHeights});
-  }
-
-  // ----------------------------------------
-
   _renderTitle() {
     const {title} = this.props;
     return (
@@ -71,6 +39,34 @@ export default class NotePreviewCard extends Component {
 
   // ----------------------------------------
 
+  _renderLabel(item) {
+    return (
+      <Card
+        marginRight={8}
+        borderWidth={1}
+        marginTop={8}
+        borderRadius={12}
+        borderColor={'grey'}
+        padding={6}>
+        <TextBase text={item} color={'white'} fontSize={12} />
+      </Card>
+    );
+  }
+
+  // ----------------------------------------
+
+  _renderLabels() {
+    const {label} = this.props;
+    const itemLabel = [];
+    if (label) {
+      label.map(item => itemLabel.push(this._renderLabel(item)));
+    }
+
+    return itemLabel;
+  }
+
+  // ----------------------------------------
+
   getHeight(height) {
     const {getHeight} = this.props;
     if (getHeight) {
@@ -81,6 +77,7 @@ export default class NotePreviewCard extends Component {
   // ----------------------------------------
 
   render() {
+    const {label} = this.props;
     return (
       <Card
         borderWidth={1}
@@ -94,6 +91,9 @@ export default class NotePreviewCard extends Component {
           {this._renderTitle()}
           <Spacer space={1.5} />
           {this._renderContent()}
+          <Spacer row wrap>
+            {this._renderLabels()}
+          </Spacer>
         </Spacer>
       </Card>
     );
