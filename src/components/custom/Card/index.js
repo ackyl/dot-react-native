@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, TouchableOpacity} from 'react-native';
 import Style from './style';
 
 export default class Card extends Component {
@@ -87,23 +87,29 @@ export default class Card extends Component {
 
   // ----------------------------------------
 
-  measureView(event) {
-    const {getHeight} = this.props;
+  onPress() {
+    const {onPress} = this.props;
 
-    if (getHeight) {
-      getHeight(event.nativeEvent.layout.height);
+    if (onPress) {
+      onPress();
     }
   }
 
   // ----------------------------------------
 
   render() {
-    return (
-      <View
-        style={this.getStyleBase()}
-        onLayout={event => this.measureView(event)}>
-        {this.props.children}
-      </View>
-    );
+    const {clickable} = this.props;
+
+    if (clickable) {
+      return (
+        <TouchableOpacity
+          style={this.getStyleBase()}
+          onPress={() => this.onPress()}>
+          {this.props.children}
+        </TouchableOpacity>
+      );
+    }
+
+    return <View style={this.getStyleBase()}>{this.props.children}</View>;
   }
 }

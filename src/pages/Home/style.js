@@ -1,6 +1,6 @@
 export default {
   main: {
-    backgroundColor: 'black',
+    backgroundColor: '#202125',
     paddingTop: 60,
   },
   row: {

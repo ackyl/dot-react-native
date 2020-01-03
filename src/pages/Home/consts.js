@@ -15,7 +15,7 @@ export const DATA = [
     id: 1,
     title: 'Note 1',
     content: LOREM_IPSUM.XS,
-    label: ['Book of Verse', 'Book of Past', 'Cart'],
+    label: ['Book of Verse'],
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ export const DATA = [
     id: 4,
     title: 'Note 4',
     content: LOREM_IPSUM.XL,
-    label: ['Book of Past', 'Cart', 'Present Collective'],
+    label: ['Book of Past', 'Present Collective'],
   },
   {
     id: 5,
@@ -42,7 +42,6 @@ export const DATA = [
     id: 6,
     title: 'Note 6',
     content: LOREM_IPSUM.XS,
-    label: ['Book of Past', 'Cart', 'Present Collective', 'Carter B'],
   },
   {
     id: 7,

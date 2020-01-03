@@ -67,26 +67,27 @@ export default class NotePreviewCard extends Component {
 
   // ----------------------------------------
 
-  getHeight(height) {
-    const {getHeight} = this.props;
-    if (getHeight) {
-      getHeight(height);
+  onPress() {
+    const {onPress} = this.props;
+
+    if (onPress) {
+      onPress();
     }
   }
 
   // ----------------------------------------
 
   render() {
-    const {label} = this.props;
     return (
       <Card
         borderWidth={1}
         borderRadius={8}
-        borderColor={'white'}
+        borderColor={'rgba(255,255,255,0.1)'}
         margin={8}
         padding={16}
-        getHeight={height => this.getHeight(height)}
-        width={190}>
+        width={190}
+        clickable
+        onPress={() => this.onPress()}>
         <Spacer>
           {this._renderTitle()}
           <Spacer space={1.5} />
