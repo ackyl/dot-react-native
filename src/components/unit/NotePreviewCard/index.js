@@ -85,7 +85,6 @@ export default class NotePreviewCard extends Component {
         borderColor={'rgba(255,255,255,0.1)'}
         margin={8}
         padding={16}
-        width={190}
         clickable
         onPress={() => this.onPress()}>
         <Spacer>
