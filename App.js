@@ -1,6 +1,6 @@
 import React from 'react';
 import {Scene, Router, Stack} from 'react-native-router-flux';
-import {Home, Finance} from '@app-pages';
+import {Home} from '@app-pages';
 
 const App = () => {
   return (
